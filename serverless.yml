@@ -1,0 +1,45 @@
+service: aws-lambda-hexagonal
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-2
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - sqs:ReceiveMessage
+            - sqs:DeleteMessage
+            - sqs:GetQueueAttributes
+          Resource: arn:aws:sqs:us-east-2:196900111372:SQS_PE
+functions:
+  handler:
+    handler: src/lambda/handler.handler    
+    events:
+      - http:
+          path: citas
+          method: post
+      - http:
+          path: confirmarCita/{id}
+          method: post
+      - http:
+          path: citas/{id}
+          method: get          
+      - http:
+          path: api-docs
+          method: get
+      - sqs:
+          arn: arn:aws:sqs:us-east-2:196900111372:SQS_PE
+      - sqs:
+          arn: arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS
+
+      - eventBridge:
+          pattern:
+            source:
+              - "app.citas"
+            detail-type:
+              - "CitaConfirmada"
+
+
+plugins:
+  - serverless-offline
