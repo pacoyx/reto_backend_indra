@@ -126,14 +126,15 @@ export const handler = async (event: APIGatewayEvent | SQSEvent) => {
     if ((event as SQSEvent).Records) {
         for (const record of (event as SQSEvent).Records) {
 
-            const queueArn = record.eventSourceARN;
-            console.log("📌 ARN de la cola:", queueArn);
-            if (queueArn.includes("sqs_confirmados")) {                
+            const queueArn = record.eventSourceARN;            
+            if (queueArn.toLowerCase().includes("sqs_confirmados")) {                
                 const cita = JSON.parse(record.body);
                 await citaUseCase.actualizarCitaDynamo(cita.insuredId);
             } else {
                 const msgBody = JSON.parse(record.body);
                 let cita = JSON.parse(msgBody.Message) as Cita;
+                console.log("cita ==>", cita);
+                
                 let nuevaCita = new Cita(cita.insuredId, cita.scheduleId, cita.countryISO, cita.statusReg);
                 await citaUseCase.guardarCitaMysql(nuevaCita);
             }
