@@ -140,7 +140,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-2-cad81eb2-2609",
-                  "S3Key": "serverless/aws-lambda-hexagonal/dev/1746682921824-2025-05-08T05:42:01.824Z/aws-lambda-hexagonal.zip"
+                  "S3Key": "serverless/aws-lambda-hexagonal/dev/1746714402551-2025-05-08T14:26:42.551Z/aws-lambda-hexagonal.zip"
                 },
                 "Handler": "src/lambda/handler.handler",
                 "Runtime": "nodejs18.x",
@@ -163,14 +163,14 @@
                 "HandlerLogGroup"
               ]
             },
-            "HandlerLambdaVersionQV6Fd9tJmK0hJxFrwX1CNiBR282cdoGIy7NvRVkK5I": {
+            "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "HandlerLambdaFunction"
                 },
-                "CodeSha256": "WqI1vBNCE7aXwgvHVGpT54lX0/Vu5URNY094VeisB1s="
+                "CodeSha256": "yfLHK8X2OOEUAJyNts5hzcfB6/Kg0Y4KUfNVSf0/xmg="
               }
             },
             "ApiGatewayRestApi": {
@@ -438,7 +438,7 @@
                 "HandlerLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1746682910869": {
+            "ApiGatewayDeployment1746714386301": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -601,7 +601,7 @@
             "HandlerLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "HandlerLambdaVersionQV6Fd9tJmK0hJxFrwX1CNiBR282cdoGIy7NvRVkK5I"
+                "Ref": "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE"
               },
               "Export": {
                 "Name": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"
@@ -701,7 +701,7 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "HandlerLambdaVersionQV6Fd9tJmK0hJxFrwX1CNiBR282cdoGIy7NvRVkK5I"
+          "versionLogicalId": "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE"
         }
       },
       "plugins": [
@@ -843,7 +843,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-2-cad81eb2-2609",
-                "S3Key": "serverless/aws-lambda-hexagonal/dev/1746682921824-2025-05-08T05:42:01.824Z/aws-lambda-hexagonal.zip"
+                "S3Key": "serverless/aws-lambda-hexagonal/dev/1746714402551-2025-05-08T14:26:42.551Z/aws-lambda-hexagonal.zip"
               },
               "Handler": "src/lambda/handler.handler",
               "Runtime": "nodejs18.x",
@@ -866,14 +866,14 @@
               "HandlerLogGroup"
             ]
           },
-          "HandlerLambdaVersionQV6Fd9tJmK0hJxFrwX1CNiBR282cdoGIy7NvRVkK5I": {
+          "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HandlerLambdaFunction"
               },
-              "CodeSha256": "WqI1vBNCE7aXwgvHVGpT54lX0/Vu5URNY094VeisB1s="
+              "CodeSha256": "yfLHK8X2OOEUAJyNts5hzcfB6/Kg0Y4KUfNVSf0/xmg="
             }
           },
           "ApiGatewayRestApi": {
@@ -1141,7 +1141,7 @@
               "HandlerLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1746682910869": {
+          "ApiGatewayDeployment1746714386301": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1304,7 +1304,7 @@
           "HandlerLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HandlerLambdaVersionQV6Fd9tJmK0hJxFrwX1CNiBR282cdoGIy7NvRVkK5I"
+              "Ref": "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE"
             },
             "Export": {
               "Name": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"
@@ -1362,12 +1362,12 @@
     "serviceProviderAwsCfStackName": "aws-lambda-hexagonal-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-2:196900111372:stack/aws-lambda-hexagonal-dev/81bfea70-2b7d-11f0-9ecc-06cbe289eaa5",
     "serviceProviderAwsCfStackCreated": "2025-05-07T19:57:29.755Z",
-    "serviceProviderAwsCfStackUpdated": "2025-05-07T20:03:25.675Z",
+    "serviceProviderAwsCfStackUpdated": "2025-05-08T05:42:09.382Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "HandlerLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-2:196900111372:function:aws-lambda-hexagonal-dev-handler:2",
+        "OutputValue": "arn:aws:lambda:us-east-2:196900111372:function:aws-lambda-hexagonal-dev-handler:3",
         "Description": "Current Lambda function version",
         "ExportName": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"
       },
@@ -1497,7 +1497,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-2-cad81eb2-2609",
-              "S3Key": "serverless/aws-lambda-hexagonal/dev/1746682921824-2025-05-08T05:42:01.824Z/aws-lambda-hexagonal.zip"
+              "S3Key": "serverless/aws-lambda-hexagonal/dev/1746714402551-2025-05-08T14:26:42.551Z/aws-lambda-hexagonal.zip"
             },
             "Handler": "src/lambda/handler.handler",
             "Runtime": "nodejs18.x",
@@ -1520,14 +1520,14 @@
             "HandlerLogGroup"
           ]
         },
-        "HandlerLambdaVersionQV6Fd9tJmK0hJxFrwX1CNiBR282cdoGIy7NvRVkK5I": {
+        "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "HandlerLambdaFunction"
             },
-            "CodeSha256": "WqI1vBNCE7aXwgvHVGpT54lX0/Vu5URNY094VeisB1s="
+            "CodeSha256": "yfLHK8X2OOEUAJyNts5hzcfB6/Kg0Y4KUfNVSf0/xmg="
           }
         },
         "ApiGatewayRestApi": {
@@ -1795,7 +1795,7 @@
             "HandlerLambdaPermissionApiGateway"
           ]
         },
-        "ApiGatewayDeployment1746682910869": {
+        "ApiGatewayDeployment1746714386301": {
           "Type": "AWS::ApiGateway::Deployment",
           "Properties": {
             "RestApiId": {
@@ -1958,7 +1958,7 @@
         "HandlerLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "HandlerLambdaVersionQV6Fd9tJmK0hJxFrwX1CNiBR282cdoGIy7NvRVkK5I"
+            "Ref": "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE"
           },
           "Export": {
             "Name": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"

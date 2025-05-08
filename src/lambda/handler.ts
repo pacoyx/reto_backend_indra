@@ -91,7 +91,26 @@ app.get("/citas/:id", async (req, res) => {
     res.json(cita);
 });
 
-
+/**
+ * @swagger
+ * confirmarCita/{id}:
+ *   post:
+ *     summary: Confirmar una cita por ID
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *          type: string
+ *     responses:
+ *      201:
+ *        description: Cita confirmada
+ *      404:
+ *       description: Cita no encontrada
+ *      500:
+ *       description: Error interno del servidor
+ *  
+ */
 app.post("/confirmarCita/:id", async (req, res) => {
     const { id } = req.params;
     await citaUseCase.confirmarCita(id);
