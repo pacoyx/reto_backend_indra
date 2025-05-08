@@ -3,6 +3,13 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: us-east-2
+  vpc:
+    securityGroupIds:
+      - sg-09c738eb6d8db4602  # 📌 ID del Security Group
+    subnetIds:
+      - subnet-023c407014a3c2cb3  # 📌 ID de la primera subred
+      - subnet-06ef40157c9580cc4
+      - subnet-02e7c2f4ff24b635f
   iam:
     role:
       statements:

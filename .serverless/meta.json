@@ -9,6 +9,16 @@
         "name": "aws",
         "runtime": "nodejs18.x",
         "region": "us-east-2",
+        "vpc": {
+          "securityGroupIds": [
+            "sg-09c738eb6d8db4602"
+          ],
+          "subnetIds": [
+            "subnet-023c407014a3c2cb3",
+            "subnet-06ef40157c9580cc4",
+            "subnet-02e7c2f4ff24b635f"
+          ]
+        },
         "iam": {
           "role": {
             "statements": [
@@ -132,7 +142,21 @@
                       "lambdaRole"
                     ]
                   ]
-                }
+                },
+                "ManagedPolicyArns": [
+                  {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:",
+                        {
+                          "Ref": "AWS::Partition"
+                        },
+                        ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+                      ]
+                    ]
+                  }
+                ]
               }
             },
             "HandlerLambdaFunction": {
@@ -140,7 +164,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-2-cad81eb2-2609",
-                  "S3Key": "serverless/aws-lambda-hexagonal/dev/1746714402551-2025-05-08T14:26:42.551Z/aws-lambda-hexagonal.zip"
+                  "S3Key": "serverless/aws-lambda-hexagonal/dev/1746716433893-2025-05-08T15:00:33.893Z/aws-lambda-hexagonal.zip"
                 },
                 "Handler": "src/lambda/handler.handler",
                 "Runtime": "nodejs18.x",
@@ -157,20 +181,30 @@
                     "IamRoleLambdaExecution",
                     "Arn"
                   ]
+                },
+                "VpcConfig": {
+                  "SecurityGroupIds": [
+                    "sg-09c738eb6d8db4602"
+                  ],
+                  "SubnetIds": [
+                    "subnet-023c407014a3c2cb3",
+                    "subnet-06ef40157c9580cc4",
+                    "subnet-02e7c2f4ff24b635f"
+                  ]
                 }
               },
               "DependsOn": [
                 "HandlerLogGroup"
               ]
             },
-            "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE": {
+            "HandlerLambdaVersion0KPcG9EHy88HivSBWMrw4Iqfo4mUHXQVx7kvKM": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "HandlerLambdaFunction"
                 },
-                "CodeSha256": "yfLHK8X2OOEUAJyNts5hzcfB6/Kg0Y4KUfNVSf0/xmg="
+                "CodeSha256": "j4iK0HSBZPTf+HUCBmY+VnKnBo5vYrA8twl4pY/nfDM="
               }
             },
             "ApiGatewayRestApi": {
@@ -438,7 +472,7 @@
                 "HandlerLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1746714386301": {
+            "ApiGatewayDeployment1746716414590": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -601,7 +635,7 @@
             "HandlerLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE"
+                "Ref": "HandlerLambdaVersion0KPcG9EHy88HivSBWMrw4Iqfo4mUHXQVx7kvKM"
               },
               "Export": {
                 "Name": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"
@@ -634,8 +668,7 @@
               }
             }
           }
-        },
-        "vpc": {}
+        }
       },
       "functions": {
         "handler": {
@@ -701,7 +734,7 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE"
+          "versionLogicalId": "HandlerLambdaVersion0KPcG9EHy88HivSBWMrw4Iqfo4mUHXQVx7kvKM"
         }
       },
       "plugins": [
@@ -712,6 +745,16 @@
       "name": "aws",
       "runtime": "nodejs18.x",
       "region": "us-east-2",
+      "vpc": {
+        "securityGroupIds": [
+          "sg-09c738eb6d8db4602"
+        ],
+        "subnetIds": [
+          "subnet-023c407014a3c2cb3",
+          "subnet-06ef40157c9580cc4",
+          "subnet-02e7c2f4ff24b635f"
+        ]
+      },
       "iam": {
         "role": {
           "statements": [
@@ -835,7 +878,21 @@
                     "lambdaRole"
                   ]
                 ]
-              }
+              },
+              "ManagedPolicyArns": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+                    ]
+                  ]
+                }
+              ]
             }
           },
           "HandlerLambdaFunction": {
@@ -843,7 +900,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-2-cad81eb2-2609",
-                "S3Key": "serverless/aws-lambda-hexagonal/dev/1746714402551-2025-05-08T14:26:42.551Z/aws-lambda-hexagonal.zip"
+                "S3Key": "serverless/aws-lambda-hexagonal/dev/1746716433893-2025-05-08T15:00:33.893Z/aws-lambda-hexagonal.zip"
               },
               "Handler": "src/lambda/handler.handler",
               "Runtime": "nodejs18.x",
@@ -860,20 +917,30 @@
                   "IamRoleLambdaExecution",
                   "Arn"
                 ]
+              },
+              "VpcConfig": {
+                "SecurityGroupIds": [
+                  "sg-09c738eb6d8db4602"
+                ],
+                "SubnetIds": [
+                  "subnet-023c407014a3c2cb3",
+                  "subnet-06ef40157c9580cc4",
+                  "subnet-02e7c2f4ff24b635f"
+                ]
               }
             },
             "DependsOn": [
               "HandlerLogGroup"
             ]
           },
-          "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE": {
+          "HandlerLambdaVersion0KPcG9EHy88HivSBWMrw4Iqfo4mUHXQVx7kvKM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HandlerLambdaFunction"
               },
-              "CodeSha256": "yfLHK8X2OOEUAJyNts5hzcfB6/Kg0Y4KUfNVSf0/xmg="
+              "CodeSha256": "j4iK0HSBZPTf+HUCBmY+VnKnBo5vYrA8twl4pY/nfDM="
             }
           },
           "ApiGatewayRestApi": {
@@ -1141,7 +1208,7 @@
               "HandlerLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1746714386301": {
+          "ApiGatewayDeployment1746716414590": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1304,7 +1371,7 @@
           "HandlerLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE"
+              "Ref": "HandlerLambdaVersion0KPcG9EHy88HivSBWMrw4Iqfo4mUHXQVx7kvKM"
             },
             "Export": {
               "Name": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"
@@ -1337,8 +1404,7 @@
             }
           }
         }
-      },
-      "vpc": {}
+      }
     },
     "dashboard": {
       "isEnabledForService": false,
@@ -1349,7 +1415,7 @@
       "serviceProvider": null,
       "instanceParameters": null
     },
-    "serviceRawFile": "service: aws-lambda-hexagonal\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs18.x\r\n  region: us-east-2\r\n  iam:\r\n    role:\r\n      statements:\r\n        - Effect: Allow\r\n          Action:\r\n            - sqs:ReceiveMessage\r\n            - sqs:DeleteMessage\r\n            - sqs:GetQueueAttributes\r\n          Resource: arn:aws:sqs:us-east-2:196900111372:SQS_PE\r\nfunctions:\r\n  handler:\r\n    handler: src/lambda/handler.handler    \r\n    events:\r\n      - http:\r\n          path: citas\r\n          method: post\r\n      - http:\r\n          path: confirmarCita/{id}\r\n          method: post\r\n      - http:\r\n          path: citas/{id}\r\n          method: get          \r\n      - http:\r\n          path: api-docs\r\n          method: get\r\n      - sqs:\r\n          arn: arn:aws:sqs:us-east-2:196900111372:SQS_PE\r\n      - sqs:\r\n          arn: arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS\r\n\r\n      - eventBridge:\r\n          pattern:\r\n            source:\r\n              - \"app.citas\"\r\n            detail-type:\r\n              - \"CitaConfirmada\"\r\n\r\n\r\nplugins:\r\n  - serverless-offline\r\n",
+    "serviceRawFile": "service: aws-lambda-hexagonal\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs18.x\r\n  region: us-east-2\r\n  vpc:\r\n    securityGroupIds:\r\n      - sg-09c738eb6d8db4602  # 📌 ID del Security Group\r\n    subnetIds:\r\n      - subnet-023c407014a3c2cb3  # 📌 ID de la primera subred\r\n      - subnet-06ef40157c9580cc4\r\n      - subnet-02e7c2f4ff24b635f\r\n  iam:\r\n    role:\r\n      statements:\r\n        - Effect: Allow\r\n          Action:\r\n            - sqs:ReceiveMessage\r\n            - sqs:DeleteMessage\r\n            - sqs:GetQueueAttributes\r\n          Resource: arn:aws:sqs:us-east-2:196900111372:SQS_PE\r\nfunctions:\r\n  handler:\r\n    handler: src/lambda/handler.handler    \r\n    events:\r\n      - http:\r\n          path: citas\r\n          method: post\r\n      - http:\r\n          path: confirmarCita/{id}\r\n          method: post\r\n      - http:\r\n          path: citas/{id}\r\n          method: get          \r\n      - http:\r\n          path: api-docs\r\n          method: get\r\n      - sqs:\r\n          arn: arn:aws:sqs:us-east-2:196900111372:SQS_PE\r\n      - sqs:\r\n          arn: arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS\r\n\r\n      - eventBridge:\r\n          pattern:\r\n            source:\r\n              - \"app.citas\"\r\n            detail-type:\r\n              - \"CitaConfirmada\"\r\n\r\n\r\nplugins:\r\n  - serverless-offline\r\n",
     "command": [
       "deploy"
     ],
@@ -1362,12 +1428,12 @@
     "serviceProviderAwsCfStackName": "aws-lambda-hexagonal-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-2:196900111372:stack/aws-lambda-hexagonal-dev/81bfea70-2b7d-11f0-9ecc-06cbe289eaa5",
     "serviceProviderAwsCfStackCreated": "2025-05-07T19:57:29.755Z",
-    "serviceProviderAwsCfStackUpdated": "2025-05-08T05:42:09.382Z",
+    "serviceProviderAwsCfStackUpdated": "2025-05-08T14:26:50.129Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "HandlerLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-2:196900111372:function:aws-lambda-hexagonal-dev-handler:3",
+        "OutputValue": "arn:aws:lambda:us-east-2:196900111372:function:aws-lambda-hexagonal-dev-handler:4",
         "Description": "Current Lambda function version",
         "ExportName": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"
       },
@@ -1489,7 +1555,21 @@
                   "lambdaRole"
                 ]
               ]
-            }
+            },
+            "ManagedPolicyArns": [
+              {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+                  ]
+                ]
+              }
+            ]
           }
         },
         "HandlerLambdaFunction": {
@@ -1497,7 +1577,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-2-cad81eb2-2609",
-              "S3Key": "serverless/aws-lambda-hexagonal/dev/1746714402551-2025-05-08T14:26:42.551Z/aws-lambda-hexagonal.zip"
+              "S3Key": "serverless/aws-lambda-hexagonal/dev/1746716433893-2025-05-08T15:00:33.893Z/aws-lambda-hexagonal.zip"
             },
             "Handler": "src/lambda/handler.handler",
             "Runtime": "nodejs18.x",
@@ -1514,20 +1594,30 @@
                 "IamRoleLambdaExecution",
                 "Arn"
               ]
+            },
+            "VpcConfig": {
+              "SecurityGroupIds": [
+                "sg-09c738eb6d8db4602"
+              ],
+              "SubnetIds": [
+                "subnet-023c407014a3c2cb3",
+                "subnet-06ef40157c9580cc4",
+                "subnet-02e7c2f4ff24b635f"
+              ]
             }
           },
           "DependsOn": [
             "HandlerLogGroup"
           ]
         },
-        "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE": {
+        "HandlerLambdaVersion0KPcG9EHy88HivSBWMrw4Iqfo4mUHXQVx7kvKM": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "HandlerLambdaFunction"
             },
-            "CodeSha256": "yfLHK8X2OOEUAJyNts5hzcfB6/Kg0Y4KUfNVSf0/xmg="
+            "CodeSha256": "j4iK0HSBZPTf+HUCBmY+VnKnBo5vYrA8twl4pY/nfDM="
           }
         },
         "ApiGatewayRestApi": {
@@ -1795,7 +1885,7 @@
             "HandlerLambdaPermissionApiGateway"
           ]
         },
-        "ApiGatewayDeployment1746714386301": {
+        "ApiGatewayDeployment1746716414590": {
           "Type": "AWS::ApiGateway::Deployment",
           "Properties": {
             "RestApiId": {
@@ -1958,7 +2048,7 @@
         "HandlerLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "HandlerLambdaVersionYCfAHGfqiJzOU1U0OqZWUNt2x93DhEq3d5R1tvmHpnE"
+            "Ref": "HandlerLambdaVersion0KPcG9EHy88HivSBWMrw4Iqfo4mUHXQVx7kvKM"
           },
           "Export": {
             "Name": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"

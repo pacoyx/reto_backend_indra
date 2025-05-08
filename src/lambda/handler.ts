@@ -9,7 +9,6 @@ import { CitaUseCase } from "../application/use-cases/CitaUseCase";
 import { CitaRepository } from "../infrastructure/adapters/CitaRepositoryDynamo";
 import { CitaService } from "../domain/services/CitaService";
 import { CitaRepositoryMysql } from "../infrastructure/adapters/CitaRepositoryMysql";
-import recibirMensajes from "../util/receiveMessages";
 
 
 
