@@ -12,9 +12,7 @@ export class CitaRepositoryMysql {
 
     async guardarCita(cita: Cita): Promise<void> {
         const connection = await pool.getConnection();
-        console.log('Connection INSERT==>', connection);
-        
-
+        console.log('Connection INSERT==>', connection);        
         const query = `
             INSERT INTO citas (insuredId, scheduleId, countryISO, statusReg)
             VALUES (?, ?, ?, ?)

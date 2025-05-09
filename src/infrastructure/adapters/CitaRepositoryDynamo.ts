@@ -6,6 +6,7 @@ const TABLE_NAME = "Appointments";
 
 export class CitaRepository {
     async crear(cita: Cita): Promise<Cita> {
+        console.log("Creando cita en DynamoDB", cita);
 
         const params = {
             TableName: TABLE_NAME,

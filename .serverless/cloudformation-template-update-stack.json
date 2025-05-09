@@ -71,9 +71,17 @@
                   "Action": [
                     "sqs:ReceiveMessage",
                     "sqs:DeleteMessage",
-                    "sqs:GetQueueAttributes"
+                    "sqs:GetQueueAttributes",
+                    "sqs:SendMessage",
+                    "dynamodb:PutItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:GetItem",
+                    "dynamodb:DeleteItem"
                   ],
-                  "Resource": "arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS"
+                  "Resource": [
+                    "arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS",
+                    "arn:aws:dynamodb:us-east-2:196900111372:table/Appointments"
+                  ]
                 },
                 {
                   "Effect": "Allow",
@@ -125,7 +133,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-2-cad81eb2-2609",
-          "S3Key": "serverless/aws-lambda-hexagonal/dev/1746756251359-2025-05-09T02:04:11.359Z/aws-lambda-hexagonal.zip"
+          "S3Key": "serverless/aws-lambda-hexagonal/dev/1746766484998-2025-05-09T04:54:44.998Z/aws-lambda-hexagonal.zip"
         },
         "Handler": "src/lambda/handler.handler",
         "Runtime": "nodejs18.x",
@@ -158,14 +166,14 @@
         "HandlerLogGroup"
       ]
     },
-    "HandlerLambdaVersionts9rgMOUrmQ5ULG3E23t9EwJpv7kkl2IlzIAtanmc": {
+    "HandlerLambdaVersionhcqZnhpUwyofz6133bkGFicKx6RGP665xGVrSUCEBgs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HandlerLambdaFunction"
         },
-        "CodeSha256": "lNuM4hZb5J9GU4LRSd2uyDKqWSXjSyeKSKXB6fyad9Q="
+        "CodeSha256": "hxd7Sj1XrlM0I4xBJ00INlaoEN9WZAYZ3mRKX0nVvQE="
       }
     },
     "ApiGatewayRestApi": {
@@ -433,7 +441,7 @@
         "HandlerLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1746756231967": {
+    "ApiGatewayDeployment1746766466653": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -485,72 +493,6 @@
         }
       }
     },
-    "Awslambdahexagonaldevhandlerrule6EventBridgeRule": {
-      "Type": "AWS::Events::Rule",
-      "Properties": {
-        "EventPattern": {
-          "source": [
-            "app.citas"
-          ],
-          "detail-type": [
-            "CitaConfirmada"
-          ]
-        },
-        "Name": "aws-lambda-hexagonal-dev-handler-rule-6",
-        "State": "ENABLED",
-        "Targets": [
-          {
-            "Arn": {
-              "Fn::GetAtt": [
-                "HandlerLambdaFunction",
-                "Arn"
-              ]
-            },
-            "Id": "aws-lambda-hexagonal-dev-handler-rule-6-target"
-          }
-        ]
-      }
-    },
-    "HandlerEventBridgeLambdaPermission6": {
-      "Type": "AWS::Lambda::Permission",
-      "Properties": {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "HandlerLambdaFunction",
-            "Arn"
-          ]
-        },
-        "Principal": "events.amazonaws.com",
-        "SourceArn": {
-          "Fn::Join": [
-            ":",
-            [
-              "arn",
-              {
-                "Ref": "AWS::Partition"
-              },
-              "events",
-              {
-                "Ref": "AWS::Region"
-              },
-              {
-                "Ref": "AWS::AccountId"
-              },
-              {
-                "Fn::Join": [
-                  "/",
-                  [
-                    "rule",
-                    "aws-lambda-hexagonal-dev-handler-rule-6"
-                  ]
-                ]
-              }
-            ]
-          ]
-        }
-      }
-    },
     "HandlerEventSourceMappingSQSSQSCONFIRMADOS": {
       "Type": "AWS::Lambda::EventSourceMapping",
       "DependsOn": [
@@ -579,7 +521,7 @@
     "HandlerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HandlerLambdaVersionts9rgMOUrmQ5ULG3E23t9EwJpv7kkl2IlzIAtanmc"
+        "Ref": "HandlerLambdaVersionhcqZnhpUwyofz6133bkGFicKx6RGP665xGVrSUCEBgs"
       },
       "Export": {
         "Name": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"

@@ -15,6 +15,7 @@ export class CitaUseCase {
 
     async crearCita(cita: Cita): Promise<Cita> {
         this.citaService.validarCita(cita);
+        console.log("Antes de entrar a crear ====");        
         let resp = await this.citaRepo.crear(cita);
         await publicarMensaje(resp);
         return resp;

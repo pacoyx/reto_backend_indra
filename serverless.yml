@@ -18,8 +18,14 @@ provider:
             - sqs:ReceiveMessage
             - sqs:DeleteMessage
             - sqs:GetQueueAttributes
+            - sqs:SendMessage
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:GetItem
+            - dynamodb:DeleteItem
           Resource:             
             - arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS
+            - arn:aws:dynamodb:us-east-2:196900111372:table/Appointments
 functions:
   handler:
     handler: src/lambda/handler.handler    
@@ -38,13 +44,7 @@ functions:
           method: get      
       - sqs:
           arn: arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS
-
-      - eventBridge:
-          pattern:
-            source:
-              - "app.citas"
-            detail-type:
-              - "CitaConfirmada"
+ 
 
 
 plugins:

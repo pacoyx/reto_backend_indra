@@ -63,8 +63,8 @@ app.post("/citas", async (req, res) => {
     const citaData = jsonData;
     const nuevaCita = new Cita(citaData.insuredId, citaData.scheduleId, citaData.countryISO, 'pending');
     console.log("nuevaCita ==>", nuevaCita);
-
-    res.status(201).json(await citaUseCase.crearCita(nuevaCita));
+    let resp = await citaUseCase.crearCita(nuevaCita);
+    res.status(201).json(resp);
 });
 
 
