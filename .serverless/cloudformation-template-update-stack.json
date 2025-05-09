@@ -73,7 +73,7 @@
                     "sqs:DeleteMessage",
                     "sqs:GetQueueAttributes"
                   ],
-                  "Resource": "arn:aws:sqs:us-east-2:196900111372:SQS_PE"
+                  "Resource": "arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS"
                 },
                 {
                   "Effect": "Allow",
@@ -83,7 +83,6 @@
                     "sqs:GetQueueAttributes"
                   ],
                   "Resource": [
-                    "arn:aws:sqs:us-east-2:196900111372:SQS_PE",
                     "arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS"
                   ]
                 }
@@ -126,7 +125,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-2-cad81eb2-2609",
-          "S3Key": "serverless/aws-lambda-hexagonal/dev/1746719866125-2025-05-08T15:57:46.125Z/aws-lambda-hexagonal.zip"
+          "S3Key": "serverless/aws-lambda-hexagonal/dev/1746756251359-2025-05-09T02:04:11.359Z/aws-lambda-hexagonal.zip"
         },
         "Handler": "src/lambda/handler.handler",
         "Runtime": "nodejs18.x",
@@ -159,14 +158,14 @@
         "HandlerLogGroup"
       ]
     },
-    "HandlerLambdaVersionJarCYoJlF2AJTvkskrEvBZNAm2H6Rbx1wgw8UURLeZc": {
+    "HandlerLambdaVersionts9rgMOUrmQ5ULG3E23t9EwJpv7kkl2IlzIAtanmc": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HandlerLambdaFunction"
         },
-        "CodeSha256": "XUCHGPmLEJwAOgEM+77Y0RwG0y6eDK0HaEyVwgryo3o="
+        "CodeSha256": "lNuM4hZb5J9GU4LRSd2uyDKqWSXjSyeKSKXB6fyad9Q="
       }
     },
     "ApiGatewayRestApi": {
@@ -434,7 +433,7 @@
         "HandlerLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1746719845558": {
+    "ApiGatewayDeployment1746756231967": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -486,7 +485,7 @@
         }
       }
     },
-    "Awslambdahexagonaldevhandlerrule7EventBridgeRule": {
+    "Awslambdahexagonaldevhandlerrule6EventBridgeRule": {
       "Type": "AWS::Events::Rule",
       "Properties": {
         "EventPattern": {
@@ -497,7 +496,7 @@
             "CitaConfirmada"
           ]
         },
-        "Name": "aws-lambda-hexagonal-dev-handler-rule-7",
+        "Name": "aws-lambda-hexagonal-dev-handler-rule-6",
         "State": "ENABLED",
         "Targets": [
           {
@@ -507,12 +506,12 @@
                 "Arn"
               ]
             },
-            "Id": "aws-lambda-hexagonal-dev-handler-rule-7-target"
+            "Id": "aws-lambda-hexagonal-dev-handler-rule-6-target"
           }
         ]
       }
     },
-    "HandlerEventBridgeLambdaPermission7": {
+    "HandlerEventBridgeLambdaPermission6": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -543,30 +542,13 @@
                   "/",
                   [
                     "rule",
-                    "aws-lambda-hexagonal-dev-handler-rule-7"
+                    "aws-lambda-hexagonal-dev-handler-rule-6"
                   ]
                 ]
               }
             ]
           ]
         }
-      }
-    },
-    "HandlerEventSourceMappingSQSSQSPE": {
-      "Type": "AWS::Lambda::EventSourceMapping",
-      "DependsOn": [
-        "IamRoleLambdaExecution"
-      ],
-      "Properties": {
-        "BatchSize": 10,
-        "EventSourceArn": "arn:aws:sqs:us-east-2:196900111372:SQS_PE",
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "HandlerLambdaFunction",
-            "Arn"
-          ]
-        },
-        "Enabled": true
       }
     },
     "HandlerEventSourceMappingSQSSQSCONFIRMADOS": {
@@ -597,7 +579,7 @@
     "HandlerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HandlerLambdaVersionJarCYoJlF2AJTvkskrEvBZNAm2H6Rbx1wgw8UURLeZc"
+        "Ref": "HandlerLambdaVersionts9rgMOUrmQ5ULG3E23t9EwJpv7kkl2IlzIAtanmc"
       },
       "Export": {
         "Name": "sls-aws-lambda-hexagonal-dev-HandlerLambdaFunctionQualifiedArn"

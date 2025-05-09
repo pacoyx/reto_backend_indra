@@ -1,6 +1,7 @@
 import { Cita } from "../../domain/entities/Cita";
 import { CitaService } from "../../domain/services/CitaService";
 import { publicarEvento } from "../../domain/services/eventbridge";
+import { publicarMensaje } from "../../domain/services/snsService";
 import { CitaRepository } from "../../infrastructure/adapters/CitaRepositoryDynamo";
 import { CitaRepositoryMysql } from "../../infrastructure/adapters/CitaRepositoryMysql";
 
@@ -13,8 +14,10 @@ export class CitaUseCase {
     ) { }
 
     async crearCita(cita: Cita): Promise<Cita> {
-        this.citaService.validarCita(cita);  // ✅ Validación antes de guardar
-        return await this.citaRepo.crear(cita);
+        this.citaService.validarCita(cita);
+        let resp = await this.citaRepo.crear(cita);
+        await publicarMensaje(resp);
+        return resp;
     }
 
     async obtenerCita(id: string): Promise<Cita | undefined> {
@@ -30,7 +33,7 @@ export class CitaUseCase {
         if (!citaExistente) {
             throw new Error("Cita no encontrada en DynamoDB");
         }
-        
+
         citaExistente.statusReg = "confirmado"; // Actualiza el estado de la cita
         await this.citaRepo.actualizar(citaExistente);
     }
@@ -42,8 +45,8 @@ export class CitaUseCase {
         }
         cita.statusReg = "confirmed";
 
-        await publicarEvento(cita.insuredId);             
-        
+        await publicarEvento(cita.insuredId);
+
         return cita;
     }
 }

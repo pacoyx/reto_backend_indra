@@ -62,6 +62,8 @@ app.post("/citas", async (req, res) => {
     const jsonData = JSON.parse(bodyString);
     const citaData = jsonData;
     const nuevaCita = new Cita(citaData.insuredId, citaData.scheduleId, citaData.countryISO, 'pending');
+    console.log("nuevaCita ==>", nuevaCita);
+
     res.status(201).json(await citaUseCase.crearCita(nuevaCita));
 });
 
@@ -125,19 +127,9 @@ export const handler = async (event: APIGatewayEvent | SQSEvent) => {
 
     if ((event as SQSEvent).Records) {
         for (const record of (event as SQSEvent).Records) {
-
-            const queueArn = record.eventSourceARN;            
-            if (queueArn.toLowerCase().includes("sqs_confirmados")) {                
-                const cita = JSON.parse(record.body);
-                await citaUseCase.actualizarCitaDynamo(cita.insuredId);
-            } else {
-                const msgBody = JSON.parse(record.body);
-                let cita = JSON.parse(msgBody.Message) as Cita;
-                console.log("cita ==>", cita);
-                
-                let nuevaCita = new Cita(cita.insuredId, cita.scheduleId, cita.countryISO, cita.statusReg);
-                await citaUseCase.guardarCitaMysql(nuevaCita);
-            }
+            console.log("record ==>", record);
+            const cita = JSON.parse(record.body);
+            await citaUseCase.actualizarCitaDynamo(cita.insuredId);
         }
     }
 

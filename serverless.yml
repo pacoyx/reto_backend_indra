@@ -18,7 +18,8 @@ provider:
             - sqs:ReceiveMessage
             - sqs:DeleteMessage
             - sqs:GetQueueAttributes
-          Resource: arn:aws:sqs:us-east-2:196900111372:SQS_PE
+          Resource:             
+            - arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS
 functions:
   handler:
     handler: src/lambda/handler.handler    
@@ -34,9 +35,7 @@ functions:
           method: get          
       - http:
           path: api-docs
-          method: get
-      - sqs:
-          arn: arn:aws:sqs:us-east-2:196900111372:SQS_PE
+          method: get      
       - sqs:
           arn: arn:aws:sqs:us-east-2:196900111372:SQS_CONFIRMADOS
 
